@@ -6,6 +6,7 @@ import { Bookmark, Home } from "lucide-react";
 import Link from "next/link";
 import MessagesButton from "./MessagesButton";
 import NotificationsButton from "./NotificationsButton";
+import { Card } from "@/components/ui/card";
 
 interface MenuBarProps {
   className?: string;
@@ -27,7 +28,7 @@ export default async function MenuBar({ className }: MenuBarProps) {
   ]);
 
   return (
-    <div className={className}>
+    <Card className={className}>
       <Button
         variant="ghost"
         className="flex items-center justify-start gap-3"
@@ -54,6 +55,6 @@ export default async function MenuBar({ className }: MenuBarProps) {
           <span className="hidden lg:inline text-lg font-bold">Закладки</span>
         </Link>
       </Button>
-    </div>
+    </Card>
   );
 }
