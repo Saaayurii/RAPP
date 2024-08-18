@@ -11,7 +11,7 @@ export default function PostsLoadingSkeleton() {
   );
 }
 
-function PostLoadingSkeleton() {
+const PostLoadingSkeleton = () => {
   return (
     <Card className="w-full animate-pulse space-y-3 rounded-2xl bg-card p-5 shadow-sm">
       <div className="flex flex-wrap gap-3">
@@ -24,4 +24,4 @@ function PostLoadingSkeleton() {
       <Skeleton className="h-16 rounded"></Skeleton>
     </Card>
   );
-}
+};

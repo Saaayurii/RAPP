@@ -1,8 +1,14 @@
 import { useRef } from "react";
 import { Cropper, ReactCropperElement } from "react-cropper";
-import { DialogContent, DialogFooter, DialogHeader, Dialog, DialogTitle } from "./ui/dialog";
+import {
+  DialogContent,
+  DialogFooter,
+  DialogHeader,
+  Dialog,
+  DialogTitle,
+} from "./ui/dialog";
 import { Button } from "./ui/button";
-import "cropperjs/dist/cropper.css"
+import "cropperjs/dist/cropper.css";
 
 interface CropImageDialogProps {
   src: string;
@@ -19,17 +25,19 @@ export default function CropImageDialog({
 }: CropImageDialogProps) {
   const cropperRef = useRef<ReactCropperElement>(null);
 
-  function crop() {
+  const crop = () => {
     const cropper = cropperRef.current?.cropper;
     if (!cropper) return;
     cropper.getCroppedCanvas().toBlob((blob) => onCropped(blob), "image/webp");
     onClose();
-  }
+  };
 
   return (
     <Dialog open onOpenChange={onClose}>
       <DialogContent>
-        <DialogHeader><DialogTitle>Обрезать изображение</DialogTitle></DialogHeader>
+        <DialogHeader>
+          <DialogTitle>Обрезать изображение</DialogTitle>
+        </DialogHeader>
         <Cropper
           src={src}
           aspectRatio={cropAspectRatio}

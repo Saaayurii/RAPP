@@ -16,13 +16,13 @@ export default function Linkify({ children }: LinkifyProps) {
   );
 }
 
-function LinkifyUrl({ children }: LinkifyProps) {
+const LinkifyUrl = ({ children }: LinkifyProps) => {
   return (
     <LinkItUrl className="text-primary hover:underline">{children}</LinkItUrl>
   );
-}
+};
 
-function LinkifyUsername({ children }: LinkifyProps) {
+const LinkifyUsername = ({ children }: LinkifyProps) => {
   return (
     <LinkIt
       regex={/(@[a-zA-z0-9_]+)/}
@@ -35,9 +35,9 @@ function LinkifyUsername({ children }: LinkifyProps) {
       {children}
     </LinkIt>
   );
-}
+};
 
-function LinkifyHashtag({ children }: LinkifyProps) {
+const LinkifyHashtag = ({ children }: LinkifyProps) => {
   return (
     <LinkIt
       regex={/(#[a-zA-Zа-яА-ЯёЁ0-9_]+)/}
@@ -54,4 +54,4 @@ function LinkifyHashtag({ children }: LinkifyProps) {
       {children}
     </LinkIt>
   );
-}
+};

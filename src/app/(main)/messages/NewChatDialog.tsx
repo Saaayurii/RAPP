@@ -31,10 +31,10 @@ export default function NewChatDialog({
 
   const { user: loggedInUser } = useSession();
 
-  const [searchInput, setSearchInput] = useState("");
+  const { 0: searchInput, 1: setSearchInput } = useState("");
   const searchInputDebounced = useDebounce(searchInput);
 
-  const [selectedUsers, setSelectedUsers] = useState<
+  const { 0: selectedUsers, 1: setSelectedUsers } = useState<
     UserResponse<DefaultStreamChatGenerics>[]
   >([]);
 
@@ -167,7 +167,7 @@ interface UserResultProps {
   onClick: () => void;
 }
 
-function UserResult({ user, selected, onClick }: UserResultProps) {
+const UserResult = ({ user, selected, onClick }: UserResultProps) => {
   return (
     <button
       className="flex w-full items-center justify-between px-4 py-2.5 transition-colors hover:bg-muted/50"
@@ -183,14 +183,14 @@ function UserResult({ user, selected, onClick }: UserResultProps) {
       {selected && <Check className="size-5 text-green-500" />}
     </button>
   );
-}
+};
 
 interface SelectedUserTagProps {
   user: UserResponse<DefaultStreamChatGenerics>;
   onRemove: () => void;
 }
 
-function SelectedUserTag({ user, onRemove }: SelectedUserTagProps) {
+const SelectedUserTag = ({ user, onRemove }: SelectedUserTagProps) => {
   return (
     <button
       onClick={onRemove}
@@ -201,4 +201,4 @@ function SelectedUserTag({ user, onRemove }: SelectedUserTagProps) {
       <X className="mx-2 size-5 text-muted-foreground" />
     </button>
   );
-}
+};

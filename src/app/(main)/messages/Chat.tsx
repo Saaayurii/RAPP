@@ -13,7 +13,7 @@ export default function Chat() {
   const chatClient = useInitializeChatClient();
   const { resolvedTheme } = useTheme();
 
-  const [sidebarOpen, setSidebarOpen] = useState(false);
+  const {0:sidebarOpen, 1:setSidebarOpen} = useState(false);
 
   if (!chatClient) {
     return <Loader2 className="mx-auto my-3 animate-spin"></Loader2>;

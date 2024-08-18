@@ -53,22 +53,21 @@ export default function EditProfileDialog({
   });
 
   const mutation = useUpdateProfileMutation();
-  const [croppedAvatar, setCroppedAvatar] = useState<Blob | null>(null);
+  const { 0: croppedAvatar, 1: setCroppedAvatar } = useState<Blob | null>(null);
 
   async function onSubmit(values: UpdateUserProfileValues) {
     const newAvatarFile = croppedAvatar
       ? new File([croppedAvatar], `avatar_${user.id}.webp`)
       : undefined;
 
-
     mutation.mutate(
       {
         values,
-        avatar: newAvatarFile
+        avatar: newAvatarFile,
       },
       {
         onSuccess: () => {
-          setCroppedAvatar(null)
+          setCroppedAvatar(null);
           onOpenChange(false);
         },
       },
@@ -142,12 +141,12 @@ interface AvatarInputProps {
   onImageCropped: (blob: Blob | null) => void;
 }
 
-function AvatarInput({ src, onImageCropped }: AvatarInputProps) {
+const AvatarInput=({ src, onImageCropped }: AvatarInputProps)=> {
   const [imageToCrop, setImageToCrop] = useState<File>();
 
   const fileInputRef = useRef<HTMLInputElement>(null);
 
-  function onImageSelected(image: File | undefined) {
+  const onImageSelected=(image: File | undefined)=> {
     if (!image) return;
 
     Resizer.imageFileResizer(
@@ -203,5 +202,3 @@ function AvatarInput({ src, onImageCropped }: AvatarInputProps) {
     </>
   );
 }
-
-

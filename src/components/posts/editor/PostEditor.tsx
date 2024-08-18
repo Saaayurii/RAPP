@@ -56,7 +56,7 @@ export default function PostEditor() {
       blockSeparator: "\n",
     }) || "";
 
-  function onSubmit() {
+  const onSubmit = () => {
     mutation.mutate(
       {
         content: input,
@@ -69,14 +69,14 @@ export default function PostEditor() {
         },
       },
     );
-  }
+  };
 
-  function onPaste(e: ClipboardEvent<HTMLInputElement>) {
+  const onPaste = (e: ClipboardEvent<HTMLInputElement>) => {
     const files = Array.from(e.clipboardData.items)
       .filter((item) => item.kind === "file")
       .map((item) => item.getAsFile()) as File[];
     startUpload(files);
-  }
+  };
 
   return (
     <Card className="rounded-2x1 flex flex-col gap-5 bg-card p-5 shadow-sm">
@@ -132,10 +132,10 @@ interface AddAttachmentsButtonProps {
   disabled: boolean;
 }
 
-function AddAttachmentsButton({
+const AddAttachmentsButton = ({
   onFilesSelected,
   disabled,
-}: AddAttachmentsButtonProps) {
+}: AddAttachmentsButtonProps) => {
   const fileInputRef = useRef<HTMLInputElement>(null);
 
   return (
@@ -165,16 +165,16 @@ function AddAttachmentsButton({
       />
     </>
   );
-}
+};
 interface AttachmentPreviewsProps {
   attachments: Attachment[];
   removeAttachment: (fileName: string) => void;
 }
 
-function AttachmentPreviews({
+const AttachmentPreviews = ({
   attachments,
   removeAttachment,
-}: AttachmentPreviewsProps) {
+}: AttachmentPreviewsProps) => {
   return (
     <div
       className={cn(
@@ -191,17 +191,17 @@ function AttachmentPreviews({
       ))}
     </div>
   );
-}
+};
 
 interface AttachmentPreviewProps {
   attachment: Attachment;
   onRemoveClick: () => void;
 }
 
-function AttachmentPreview({
+const AttachmentPreview = ({
   attachment: { file, mediaId, isUploading },
   onRemoveClick,
-}: AttachmentPreviewProps) {
+}: AttachmentPreviewProps) => {
   const src = URL.createObjectURL(file);
 
   return (
@@ -231,4 +231,4 @@ function AttachmentPreview({
       )}
     </div>
   );
-}
+};

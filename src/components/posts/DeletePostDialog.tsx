@@ -24,11 +24,11 @@ export default function DeletePostDialog({
 }: DeletePostDialogProps) {
   const mutation = useDeletePostMutation();
 
-  function handleOpenChange(open: boolean) {
+  const handleOpenChange = (open: boolean) => {
     if (!open || !mutation.isPending) {
       onClose();
     }
-  }
+  };
 
   return (
     <Dialog open={open} onOpenChange={handleOpenChange}>
@@ -36,8 +36,8 @@ export default function DeletePostDialog({
         <DialogHeader>
           <DialogTitle>Удалить пост?</DialogTitle>
           <DialogDescription>
-          Вы уверены, что хотите удалить эту запись? Это действие не может быть
-          отменено.
+            Вы уверены, что хотите удалить эту запись? Это действие не может
+            быть отменено.
           </DialogDescription>
         </DialogHeader>
         <DialogFooter>

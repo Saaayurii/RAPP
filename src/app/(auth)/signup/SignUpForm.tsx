@@ -18,9 +18,9 @@ import { useForm } from "react-hook-form";
 import { signUp } from "./actions";
 
 export default function SignUpForm() {
-  const [error, setError] = useState<string>();
+  const { 0: error, 1: setError } = useState<string>();
 
-  const [isPending, startTransition] = useTransition();
+  const { 0: isPending, 1: startTransition } = useTransition();
 
   const form = useForm<SignUpValues>({
     resolver: zodResolver(signUpSchema),

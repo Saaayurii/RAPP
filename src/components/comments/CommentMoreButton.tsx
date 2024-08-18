@@ -19,7 +19,7 @@ export default function CommentMoreButton({
   comment,
   className,
 }: CommentMoreButtonProps) {
-  const [showDeleteDialog, setShowDeleteDialog] = useState(false);
+  const {0:showDeleteDialog, 1:setShowDeleteDialog} = useState(false);
 
   return (
     <>

@@ -24,11 +24,11 @@ export default function DeleteCommentDialog({
 }: DeleteCommentDialogProps) {
   const mutation = useDeleteCommentMutation();
 
-  function handleOpenChange(open: boolean) {
+  const handleOpenChange = (open: boolean) => {
     if (!open || !mutation.isPending) {
       onClose();
     }
-  }
+  };
 
   return (
     <Dialog open={open} onOpenChange={handleOpenChange}>
@@ -36,8 +36,8 @@ export default function DeleteCommentDialog({
         <DialogHeader>
           <DialogTitle>Удалить комментарий?</DialogTitle>
           <DialogDescription>
-          Вы уверенны, что хотите удалить этот комментарий? Это действие не может быть
-          отменено.
+            Вы уверенны, что хотите удалить этот комментарий? Это действие не
+            может быть отменено.
           </DialogDescription>
         </DialogHeader>
         <DialogFooter>

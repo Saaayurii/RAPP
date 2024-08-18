@@ -33,10 +33,10 @@ interface CustomChannelHeaderProps extends ChannelHeaderProps {
   openSidebar: () => void;
 }
 
-function CustomChannelHeader({
+const CustomChannelHeader = ({
   openSidebar,
   ...props
-}: CustomChannelHeaderProps) {
+}: CustomChannelHeaderProps) => {
   return (
     <div className="flex items-center gap-3">
       <div className="h-full p-2 md:hidden">
@@ -47,4 +47,4 @@ function CustomChannelHeader({
       <ChannelHeader {...props}></ChannelHeader>
     </div>
   );
-}
+};

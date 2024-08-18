@@ -10,7 +10,7 @@ interface EditProfileButtonProps {
 }
 
 export default function EditProfileButton({ user }: EditProfileButtonProps) {
-  const [showDialog, setShowDialog] = useState(false);
+  const {0:showDialog, 1:setShowDialog} = useState(false);
 
   return (
     <>

@@ -77,8 +77,8 @@ interface MenuHeaderProps {
   onClose: () => void;
 }
 
-function MenuHeader({ onClose }: MenuHeaderProps) {
-  const [showNewChatDialog, setShowNewChatDialog] = useState(false);
+const MenuHeader=({ onClose }: MenuHeaderProps)=> {
+  const {0:showNewChatDialog, 1:setShowNewChatDialog} = useState(false);
 
   return (
     <>

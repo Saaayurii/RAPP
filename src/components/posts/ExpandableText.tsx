@@ -9,7 +9,7 @@ interface ExpandableTextProps {
 }
 
 export default function ExpandableText({ text, limit }: ExpandableTextProps) {
-  const [isExpanded, setIsExpanded] = useState(false);
+  const { 0: isExpanded, 1: setIsExpanded } = useState(false);
 
   const handleToggle = () => {
     setIsExpanded(!isExpanded);

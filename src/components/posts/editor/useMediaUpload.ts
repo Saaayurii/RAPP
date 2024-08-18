@@ -11,9 +11,9 @@ export interface Attachment {
 export default function useMediaUpload() {
   const { toast } = useToast();
 
-  const [attachments, setAttachments] = useState<Attachment[]>([]);
+  const { 0: attachments, 1: setAttachments } = useState<Attachment[]>([]);
 
-  const [uploadProgress, setUploadProgress] = useState<number>();
+  const { 0: uploadProgress, 1: setUploadProgress } = useState<number>();
 
   const { startUpload, isUploading } = useUploadThing("attachment", {
     onBeforeUploadBegin(files) {
@@ -60,7 +60,7 @@ export default function useMediaUpload() {
     },
   });
 
-  function handleStartUpload(files: File[]) {
+  const handleStartUpload = (files: File[]) => {
     if (isUploading) {
       toast({
         variant: "destructive",
@@ -78,16 +78,16 @@ export default function useMediaUpload() {
     }
 
     startUpload(files);
-  }
+  };
 
-  function removeAttachment(fileName: string) {
+  const removeAttachment = (fileName: string) => {
     setAttachments((prev) => prev.filter((a) => a.file.name !== fileName));
-  }
+  };
 
-  function reset() {
+  const reset = () => {
     setAttachments([]);
     setUploadProgress(undefined);
-  }
+  };
 
   return {
     startUpload: handleStartUpload,

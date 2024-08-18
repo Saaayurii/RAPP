@@ -23,7 +23,7 @@ interface PostProps {
 
 export default function Post({ post }: PostProps) {
   const { user } = useSession();
-  const [showComments, setShowComments] = useState(false);
+  const { 0: showComments, 1: setShowComments } = useState(false);
   return (
     <article className="space-y-3">
       <Card className="group/post space-y-3 rounded-2xl bg-card p-5 shadow-sm">
@@ -92,7 +92,6 @@ export default function Post({ post }: PostProps) {
         </div>
         {showComments && <Comments post={post}></Comments>}
       </Card>
-      
     </article>
   );
 }
@@ -101,7 +100,7 @@ interface MediaPreviewsProps {
   attachments: Media[];
 }
 
-function MediaPreviews({ attachments }: MediaPreviewsProps) {
+const MediaPreviews = ({ attachments }: MediaPreviewsProps) => {
   return (
     <div
       className={cn(
@@ -114,13 +113,13 @@ function MediaPreviews({ attachments }: MediaPreviewsProps) {
       ))}
     </div>
   );
-}
+};
 
 interface MediaPreviewProps {
   media: Media;
 }
 
-function MediaPreview({ media }: MediaPreviewProps) {
+const MediaPreview = ({ media }: MediaPreviewProps) => {
   if (media.type === "IMAGE") {
     return (
       <Image
@@ -146,14 +145,14 @@ function MediaPreview({ media }: MediaPreviewProps) {
   }
 
   return <p className="text-destructive">Тип файла не поддерживается.</p>;
-}
+};
 
 interface CommentButtonProps {
   post: PostData;
   onClick: () => void;
 }
 
-function CommentButton({ post, onClick }: CommentButtonProps) {
+const CommentButton = ({ post, onClick }: CommentButtonProps) => {
   return (
     <button onClick={onClick} className="flex items-center gap-2">
       <MessageSquare className="size-5"></MessageSquare>
@@ -163,4 +162,4 @@ function CommentButton({ post, onClick }: CommentButtonProps) {
       </span>
     </button>
   );
-}
+};

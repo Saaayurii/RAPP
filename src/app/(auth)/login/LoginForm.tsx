@@ -18,9 +18,9 @@ import { useForm } from "react-hook-form";
 import { login } from "./actions";
 
 export default function LoginForm() {
-  const [error, setError] = useState<string>();
+  const { 0: error, 1: setError } = useState<string>();
 
-  const [isPending, startTransition] = useTransition();
+  const { 0: isPending, 1: startTransition } = useTransition();
 
   const form = useForm<LoginValues>({
     resolver: zodResolver(loginSchema),
